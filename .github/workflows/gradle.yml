@@ -37,6 +37,18 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
+          
+    # 프로젝트가 하위 폴더에 있다면 working-directory 옵션을 사용하세요.
+    - name: Change to project directory
+      run: cd your-subdirectory
+
+    # 파일 확인을 추가하는 워크플로 수정
+    - name: Debug workspace
+      run: ls -al
+
+    # 디렉토리 확인
+    - name: Print working directory
+      run: pwd
 
     # 4. Gradle Wrapper 실행 권한 추가
     - name: Set executable permission for gradlew
